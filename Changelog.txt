@@ -1,0 +1,38 @@
+2005 01 19
+
+
+    ZebraZ Changelog file
+
+
+Changes since last release:
+
+*  Membership Directory code TOTALLY rewritten. It's actually a lot more
+   involved and complex but the previous code was overly simple and had
+   some minor bugs in the layout of the address blocks. This new code is
+   also a HUGE step towards other forms of reporting out of Members and
+   is more flexible for different layouts due to the more modular code.
+
+*  Search function changed to include archived members (previously excluded
+   archived members). Need to develop a visual way to differentiate
+   archived from acive in the search results. Probably change text color to
+   gray.
+
+*  Some minor additions/tweaks to the global vars file (config file). Thanks
+   to JoeClark for his input into this.
+
+*  I think that's it.
+
+
+
+Planned changes for next release:
+
+*  Further modification to the search function to differentiate archived
+   members from non-archived members.
+
+*  Revisit the cron reports - it works but probably only I can work it
+   so need to clean it up and develop a GUI for the whole thing (editing
+   letters, controling what is run and when, etc... This is the BIG goal
+   for next release.
+
+*  Continue to "abstract" everything so as to be club-neutral. (building
+   the globals/config file).

@@ -1,0 +1,143 @@
+
+--
+-- Table structure for table `Contact`
+--
+
+CREATE TABLE Contact (
+  ContactID mediumint(9) NOT NULL auto_increment,
+  FamOrgID mediumint(6) unsigned NOT NULL default '0',
+  MemberID mediumint(6) unsigned NOT NULL default '0',
+  ContactTypeID tinyint(3) unsigned NOT NULL default '0',
+  ContactInfo tinytext NOT NULL,
+  ContactNotes text,
+  PRIMARY KEY  (ContactID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `ContactType`
+--
+
+CREATE TABLE ContactType (
+  ContactTypeID tinyint(3) NOT NULL auto_increment,
+  ContactType tinytext NOT NULL,
+  PRIMARY KEY  (ContactTypeID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `Dues`
+--
+
+CREATE TABLE Dues (
+  DuesID mediumint(6) unsigned NOT NULL auto_increment,
+  FamOrgID mediumint(6) unsigned NOT NULL default '0',
+  MemberTypeID mediumint(3) unsigned NOT NULL default '0',
+  AmtDue decimal(6,2) unsigned NOT NULL default '0.00',
+  DuesDueDate date NOT NULL default '0000-00-00',
+  AmtPaid decimal(7,2) unsigned NOT NULL default '0.00',
+  PaidDate date NOT NULL default '0000-00-00',
+  DuesNotes text,
+  PRIMARY KEY  (DuesID),
+  KEY FamilyOrgID (FamOrgID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `FamOrg`
+--
+
+CREATE TABLE FamOrg (
+  FamOrgID mediumint(6) NOT NULL auto_increment,
+  MemberTypeID tinyint(3) NOT NULL default '0',
+  Name varchar(50) NOT NULL default '',
+  JoinDate date NOT NULL default '0000-00-00',
+  ExpDate date NOT NULL default '0000-00-00',
+  Directory char(1) NOT NULL default '',
+  FamOrgArchive char(1) NOT NULL default '0',
+  BadAddress char(1) NOT NULL default '0',
+  Street1 tinytext,
+  Street2 tinytext,
+  Street3 tinytext,
+  City varchar(30) default NULL,
+  StateTwoLetter char(2) default NULL,
+  Zip varchar(9) default NULL,
+  Region varchar(40) default NULL,
+  Country varchar(40) default 'USA',
+  FamOrgNotes text,
+  Fee varchar(4) default NULL,
+  PRIMARY KEY  (FamOrgID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `GroupVolunteer`
+--
+
+CREATE TABLE GroupVolunteer (
+  VolTypeID tinyint(3) unsigned NOT NULL default '0',
+  FamOrgID mediumint(6) unsigned NOT NULL default '0',
+  GroupVolunteerNotes text,
+  PRIMARY KEY  (FamOrgID,VolTypeID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `Member`
+--
+
+CREATE TABLE Member (
+  MemberID mediumint(6) unsigned NOT NULL auto_increment,
+  FamOrgID mediumint(6) unsigned NOT NULL default '0',
+  Title varchar(30) default NULL,
+  Salutation varchar(30) default NULL,
+  PName varchar(30) default NULL,
+  FName varchar(30) default NULL,
+  MName varchar(30) default NULL,
+  LName varchar(30) default NULL,
+  Suffix varchar(30) default NULL,
+  DOB date default '0000-00-00',
+  Gender char(1) default NULL,
+  MemberNotes mediumtext,
+  PRIMARY KEY  (MemberID)
+) TYPE=MyISAM PACK_KEYS=0;
+
+
+--
+-- Table structure for table `MemberType`
+--
+
+CREATE TABLE MemberType (
+  MemberTypeID mediumint(3) unsigned NOT NULL auto_increment,
+  MemberType varchar(25) NOT NULL default '',
+  DuesRate decimal(6,2) unsigned NOT NULL default '0.00',
+  DuesFrequency tinyint(2) NOT NULL default '1',
+  MemberTypeNotes mediumtext,
+  PRIMARY KEY  (MemberTypeID),
+  KEY MemberType (MemberType)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `StateList`
+--
+
+CREATE TABLE StateList (
+  StateID smallint(2) NOT NULL auto_increment,
+  StateName mediumtext NOT NULL,
+  StateTwoLetter tinytext NOT NULL,
+  PRIMARY KEY  (StateID)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table `VolunteerType`
+--
+
+CREATE TABLE VolunteerType (
+  VolTypeID tinyint(3) unsigned NOT NULL auto_increment,
+  VolType varchar(30) NOT NULL default '',
+  VolDescription text,
+  PRIMARY KEY  (VolTypeID),
+  KEY VolType (VolType)
+) TYPE=MyISAM PACK_KEYS=0;
