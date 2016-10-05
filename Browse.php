@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+echo "my name is khan ";
 //print("<table border='1'><tr><td>Session:<pre>");
 //print_r($_SESSION);
 //print("</pre></td>");
